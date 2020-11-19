@@ -74,6 +74,7 @@ def main() -> int:
     try:
         client = zulip.init_from_options(options)
     except zulip.InvalidCredentialsError:
+        log.exception("Invalid API credentials")
         return 1
     if not options.message:
         options.message = sys.stdin.read()
